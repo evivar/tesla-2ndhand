@@ -90,7 +90,7 @@ const router = useRouter();
 // TODO: Ponerlo en un .env
 const whatsappModel = reactive({
   phoneNumber: "34651408843",
-  message: `Hola, estoy usando el modelo Tesla Model X 2024\n${window.location.href}`,
+  message: `Hola, estoy usando el modelo Tesla Model X 2024\nlink`,
 });
 
 const sendWhatsapp = () => {
