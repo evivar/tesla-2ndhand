@@ -2,7 +2,7 @@
   <NuxtLink :to="`/car/1`" class="tsm-card">
     <div class="image">
       <div class="like">
-        <span class="material-symbols-outlined"> favorite </span>
+        <img src="@/assets/images/t-heart.svg" alt="Like" />
       </div>
     </div>
     <div class="content">

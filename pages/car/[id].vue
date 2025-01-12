@@ -1,11 +1,11 @@
 <template>
   <div class="car">
     <div class="content">
-      <div class="photos">Foticos</div>
+      <div class="photos"><TSMGallery /></div>
       <div class="info">
         <div class="info--content">
-          <h1 class="name">Nombre</h1>
-          <h2 class="city">Ciudad</h2>
+          <h1 class="name">Tesla Model X</h1>
+          <h2 class="city">Murcia</h2>
           <div class="specs">
             <div class="specs--row">
               <div class="specs--row__item">
@@ -81,14 +81,21 @@
 
 <script setup>
 import { reactive } from "vue";
+import { useRouter, useRoute } from "vue-router";
+import TSMGallery from "~/components/organisms/TSMGallery.vue";
+
+const route = useRoute();
+const router = useRouter();
 
 // TODO: Ponerlo en un .env
 const whatsappModel = reactive({
   phoneNumber: "34651408843",
-  message: "Hola, estoy usando el modelo Tesla Model X 2024",
+  message: `Hola, estoy usando el modelo Tesla Model X 2024\n${window.location.href}`,
 });
 
 const sendWhatsapp = () => {
+  console.log("router :>> ", router);
+  console.log("route :>> ", route);
   const encodedMessage = encodeURIComponent(whatsappModel.message);
   const whatsappUrl = `https://wa.me/${whatsappModel.phoneNumber}?text=${encodedMessage}`;
   window.open(whatsappUrl, "_blank");
@@ -130,11 +137,36 @@ const sendWhatsapp = () => {
     border-radius: 10px;
     width: 100%;
     padding: 1rem;
+    & > .title {
+      @apply font-semibold lg:text-lg text-base;
+    }
     & > .content {
       @apply lg:flex-row flex-col gap-2;
       display: flex;
       flex-wrap: nowrap;
       justify-content: space-between;
+      align-items: center;
+
+      & > .content--user {
+        @apply flex flex-col gap-1;
+      }
+      & > .content--links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        & > .link {
+          @apply font-semibold shadow-sm w-full text-center;
+          cursor: pointer;
+          background: #000214;
+          color: white;
+          padding: 0.5rem 1rem;
+          border-radius: 60px;
+          &:hover {
+            @apply shadow-lg;
+          }
+        }
+      }
     }
   }
 }
