@@ -37,6 +37,14 @@
 <script setup>
 import TSMCard from "~/components/atoms/TSMCard.vue";
 import TSMSearchWidget from "~/components/molecules/TSMSearchWidget.vue";
+
+const route = useRoute();
+
+const { data, pending, error } = useFetch(
+  `http://teslasegundamano.es/api.php?endpoint=coches&limit=8`
+);
+
+console.log('data.coches :>> ', data.coches);
 </script>
 
 <style lang="scss" scoped>
@@ -56,7 +64,7 @@ import TSMSearchWidget from "~/components/molecules/TSMSearchWidget.vue";
       margin-bottom: 1rem;
     }
     & > .content {
-      @apply lg:mt-0 mt-[38px];
+      @apply lg:mt-0 mt-[60px];
       padding: 16px;
       display: flex;
       flex-direction: column;

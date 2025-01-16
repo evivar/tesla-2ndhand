@@ -1,17 +1,17 @@
 <template>
   <div class="tsm-gallery">
     <Carousel id="gallery" v-bind="galleryConfig" v-model="currentSlide">
-      <Slide v-for="image in images" :key="image.id">
+      <Slide v-for="image in images" :key="image">
         <div class="carousel__item">
-          <img :src="image.url" alt="Gallery Image" class="gallery-image" />
+          <img :src="image" alt="Gallery Image" class="gallery-image" />
         </div>
       </Slide>
     </Carousel>
 
     <Carousel id="thumbnails" v-bind="thumbnailsConfig" v-model="currentSlide">
-      <Slide v-for="image in images" :key="image.id">
-        <div class="carousel__item" @click="slideTo(image.id - 1)">
-          <img :src="image.url" alt="Thumbnail Image" class="thumbnail-image" />
+      <Slide v-for="image in images" :key="image">
+        <div class="carousel__item" @click="slideTo(image - 1)">
+          <img :src="image" alt="Thumbnail Image" class="thumbnail-image" />
         </div>
       </Slide>
 
@@ -26,6 +26,13 @@
 import "vue3-carousel/carousel.css";
 import { Carousel, Slide, Navigation } from "vue3-carousel";
 import { ref } from "vue";
+
+defineProps({
+  images: {
+    type: Array,
+    default: () => [],
+  },
+});
 
 const currentSlide = ref(0);
 
@@ -45,7 +52,7 @@ const thumbnailsConfig = {
   gap: 10,
 };
 
-const images = Array.from({ length: 5 }, (_, index) => ({
+const images1 = Array.from({ length: 5 }, (_, index) => ({
   id: index + 1,
   url: `https://picsum.photos/800/600?random=${index + 1}`,
 }));

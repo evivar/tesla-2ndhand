@@ -2,6 +2,7 @@
   <div class="search">
     <div class="search--filters">
         <span class="title">Filtros</span>
+        <TSMSelect/>
     </div>
     <div class="search--results">
         <span class="title">Resultados</span>
@@ -14,6 +15,7 @@
 
 <script setup>
 import TSMCard from '~/components/atoms/TSMCard.vue';
+import TSMSelect from '~/components/atoms/TSMSelect.vue';
 </script>
 
 <style lang="scss" scoped>

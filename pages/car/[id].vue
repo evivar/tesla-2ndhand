@@ -1,16 +1,16 @@
 <template>
   <div class="car">
     <div class="content">
-      <div class="photos"><TSMGallery /></div>
+      <div class="photos"><TSMGallery :images="data.imagenes" /></div>
       <div class="info">
         <div class="info--content">
-          <h1 class="name">Tesla Model X</h1>
-          <h2 class="city">Murcia</h2>
+          <h1 class="name">{{ data.modelo }}</h1>
+          <h2 class="city">{{ data.ciudad }}</h2>
           <div class="specs">
             <div class="specs--row">
               <div class="specs--row__item">
                 <img src="@/assets/images/t-year.svg" alt="Year" />
-                <span class="year">2025</span>
+                <span class="year">{{ data.año }}</span>
               </div>
               <div class="specs--row__item border-x">
                 <img src="@/assets/images/t-model.svg" alt="Model" />
@@ -18,7 +18,7 @@
               </div>
               <div class="specs--row__item">
                 <img src="@/assets/images/t-kms.png" alt="Kms" width="32px" />
-                <span class="kms">75.000 kms</span>
+                <span class="kms">{{ data.kms }} kms</span>
               </div>
             </div>
             <div class="specs--row border-y">
@@ -32,21 +32,21 @@
               </div>
               <div class="specs--row__item">
                 <img src="@/assets/images/t-cv.svg" alt="Kms" />
-                <div class="ccv">200 cv</div>
+                <div class="ccv">{{ data.cv }} cv</div>
               </div>
             </div>
             <div class="specs--row">
               <div class="specs--row__item">
                 <img src="@/assets/images/t-color.svg" alt="Kms" />
-                <div class="color">Verde</div>
+                <div class="color">{{ data.color }}</div>
               </div>
               <div class="specs--row__item border-x">
                 <img src="@/assets/images/t-door.svg" alt="Kms" />
-                <div class="doors">5 puertas</div>
+                <div class="doors">{{ data.puertas }} puertas</div>
               </div>
               <div class="specs--row__item">
                 <img src="@/assets/images/t-seat.svg" alt="Kms" />
-                <div class="seats">5 plazas</div>
+                <div class="seats">{{ data.plazas }} plazas</div>
               </div>
             </div>
           </div>
@@ -86,6 +86,10 @@ import TSMGallery from "~/components/organisms/TSMGallery.vue";
 
 const route = useRoute();
 const router = useRouter();
+
+const { data, pending, error } = useFetch(
+  `http://teslasegundamano.es/api.php?endpoint=detalles&id=${route.params.id}`
+);
 
 // TODO: Ponerlo en un .env
 const whatsappModel = reactive({

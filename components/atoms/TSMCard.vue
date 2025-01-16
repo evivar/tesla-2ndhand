@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink :to="`/car/1`" class="tsm-card">
+  <NuxtLink :to="`/car/59615893`" class="tsm-card">
     <div class="image">
       <div class="like">
         <img src="@/assets/images/t-heart.svg" alt="Like" />

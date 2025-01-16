@@ -5,6 +5,8 @@
 :root {
   --vc-pgn-active-color: #7382ea;
   --vc-pgn-background-color: #eff2f8;
+  --vs-border: none!important;
+  --vs-font-size: 14px!important;
 }
 
 body {
